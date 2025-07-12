@@ -1,7 +1,9 @@
-"use client";
+'use client';
 
-import * as React from "react"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
+
+// Types
+import type * as React from 'react';
 
 const Provider = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -12,11 +14,11 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
     >
       {children}
     </NextThemesProvider>
-  )
-}
+  );
+};
 
 // Named export
-export { Provider }
+export { Provider };
 
 // Default export
-export default Provider
+export default Provider;
