@@ -1,17 +1,23 @@
 import type { NextConfig } from 'next';
 import nextra from 'nextra';
 
-const config: NextConfig = {
+const withNextra = nextra({
+  // Specify the theme you are using, e.g., 'nextra-theme-docs' or 'nextra-theme-blog'
+});
+
+const { experimental: exp, ...config } = withNextra({
+  reactStrictMode: true,
+});
+
+// Move `experimental.turbo` to `config.turbopack` while preserving other configuration
+const { turbo: turbopack, ...experimental } = exp || {};
+const nextConfig: NextConfig = {
+  ...config,
+  experimental,
   turbopack: {
-    resolveAlias: {
-      'next-mdx-import-source-file': './mdx-components.tsx',
-    },
+    ...turbopack,
+    ...config.turbopack,
   },
 };
 
-// Set up Nextra with its configuration
-const withNextra = nextra({
-  // ... Add Nextra-specific options here
-});
-
-export default withNextra(config);
+export default nextConfig;

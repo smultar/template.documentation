@@ -12,5 +12,7 @@ const useMDXComponents = (components: MDXComponents): MDXComponents => {
   };
 };
 
+export { useMDXComponents };
+
 // Named export for use in MDX files
 export default useMDXComponents;
